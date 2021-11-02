@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using anogamelib;
+using System;
 
 public class PlayerController : StateMachineBase<PlayerController>
 {
@@ -44,6 +45,7 @@ public class PlayerController : StateMachineBase<PlayerController>
 			base.OnEnterState();
 			m_gameInput = new GameInput();
 			m_gameInput.Enable();
+			m_gameInput.Player.Primary.performed += Primary_performed;
 
 		}
 		public override void OnUpdateState()
@@ -64,5 +66,34 @@ public class PlayerController : StateMachineBase<PlayerController>
 			machine.DispatchMoveEvent(vec2MovementDir.normalized, fMoveLength);
 		}
 
+		private void Primary_performed(InputAction.CallbackContext obj)
+		{
+			machine.SetState(new PlayerController.Attack(machine));
+		}
+
+		public override void OnExitState()
+		{
+			m_gameInput.Player.Primary.performed -= Primary_performed;
+		}
+	}
+
+	private class Attack : StateBase<PlayerController>
+	{
+		private AnimStateAttackEnd m_animStateAttackEnd;
+		public Attack(PlayerController _machine) : base(_machine){}
+
+		public override void OnEnterState()
+		{
+			machine.m_animator.SetTrigger("attack");
+
+			m_animStateAttackEnd = machine.m_animator.GetBehaviour<AnimStateAttackEnd>();
+			m_animStateAttackEnd.OnAnimationEnd.AddListener(() => {
+				machine.SetState(new PlayerController.Idle(machine));
+			});
+		}
+		public override void OnExitState()
+		{
+			m_animStateAttackEnd.OnAnimationEnd.RemoveAllListeners();
+		}
 	}
 }
