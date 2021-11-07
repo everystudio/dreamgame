@@ -34,7 +34,7 @@ public class OnDamageListener : MonoBehaviour, IDamageable
 	{
 		yield return (m_fDelay == 0f) ? null : new WaitForSeconds(m_fDelay);
 		onDamaged.Invoke(_location);
-		onHealthChanged.Invoke((_damageInfo.MinHP > 0) ? (_damageInfo.MinHP / _damageInfo.MaxHP) : 0);
+		onHealthChanged?.Invoke((_damageInfo.MinHP > 0) ? (_damageInfo.MinHP / _damageInfo.MaxHP) : 0);
 	}
 
 }

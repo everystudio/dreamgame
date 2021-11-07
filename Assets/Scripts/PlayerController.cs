@@ -7,17 +7,20 @@ using System;
 
 public class PlayerController : StateMachineBase<PlayerController>
 {
-	private float m_fMovementSpeed = 3.0f;
 	private Animator m_animator;
+	[SerializeField]
+	private Mover m_mover;
 
-	private List<IMove2D> IMoveInterfaces = new List<IMove2D>();
+	public GameObject m_prefAttack;
+
+	//private List<IMove2D> IMoveInterfaces = new List<IMove2D>();
 
 	private void Start()
 	{
 		m_animator = GetComponent<Animator>();
 		SetState(new PlayerController.Idle(this));
 
-		GetComponentsInChildren<IMove2D>(true, IMoveInterfaces);
+		//GetComponentsInChildren<IMove2D>(true, IMoveInterfaces);
 	}
 
 	private void SetDir(Vector2 _dir)
@@ -28,10 +31,20 @@ public class PlayerController : StateMachineBase<PlayerController>
 
 	private void DispatchMoveEvent(Vector2 _direction, float _speed)
 	{
+		/*
 		for (int i = 0; i < IMoveInterfaces.Count; i++)
 		{
 			IMoveInterfaces[i].OnMoveHandle(_direction, _speed);
 		}
+		*/
+	}
+
+	private void CreateAttack(Vector2 _pos)
+	{
+		float angle = Vector2.SignedAngle(new Vector2(-1f, 0f), m_mover.Direction);
+		AttackSlash script = Instantiate(m_prefAttack, new Vector3(_pos.x, _pos.y), Quaternion.AngleAxis(angle, new Vector3(0, 0, 1))).GetComponent<AttackSlash>();
+
+		StartCoroutine(script.Slash(m_mover.Direction));
 	}
 
 	private class Idle : StateBase<PlayerController>
@@ -53,17 +66,13 @@ public class PlayerController : StateMachineBase<PlayerController>
 			base.OnUpdateState();
 
 			Vector2 vec2MovementDir = m_gameInput.Player.Move.ReadValue<Vector2>();
-			float fMoveLength = machine.m_fMovementSpeed * Time.deltaTime;
-			machine.transform.Translate(vec2MovementDir.normalized * fMoveLength);
-
-			machine.GetComponent<Rigidbody2D>().MovePosition((Vector2)machine.transform.position + (vec2MovementDir * fMoveLength));
 
 			if (vec2MovementDir != Vector2.zero)
 			{
 				machine.SetDir(vec2MovementDir.normalized);
 			}
-
-			machine.DispatchMoveEvent(vec2MovementDir.normalized, fMoveLength);
+			machine.m_mover.Move(vec2MovementDir);
+			//machine.DispatchMoveEvent(vec2MovementDir.normalized, fMoveLength);
 		}
 
 		private void Primary_performed(InputAction.CallbackContext obj)
@@ -85,6 +94,8 @@ public class PlayerController : StateMachineBase<PlayerController>
 		public override void OnEnterState()
 		{
 			machine.m_animator.SetTrigger("attack");
+
+			machine.CreateAttack(machine.m_mover.transform.position);
 
 			m_animStateAttackEnd = machine.m_animator.GetBehaviour<AnimStateAttackEnd>();
 			m_animStateAttackEnd.OnAnimationEnd.AddListener(() => {

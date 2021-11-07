@@ -166,7 +166,9 @@ public class Health : MonoBehaviour
     public void Damage(float _amount, Vector3 _hitlocation, GameObject _cause)
     {
         if (invulnerable)
+        {
             return;
+        }
 
         minHP -= _amount;
 

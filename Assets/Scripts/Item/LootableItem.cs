@@ -32,7 +32,7 @@ public class LootableItem : MonoBehaviour, ISaveable
 
     private Coroutine moveCoroutine;
 
-    private GameObject player;
+    private GameObject playerItemPicker;
     private bool isLooted;
 
     private void OnValidate()
@@ -84,18 +84,18 @@ public class LootableItem : MonoBehaviour, ISaveable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isLooted && collision.CompareTag("Player"))
+        if (!isLooted && collision.CompareTag("PlayerItemPicker"))
         {
-            player = collision.gameObject;
+            playerItemPicker = collision.gameObject;
             Invoke("MoveToPlayer", configuration.activationWait);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!isLooted && collision.CompareTag("Player"))
+        if (!isLooted && collision.CompareTag("PlayerItemPicker"))
         {
-            player = null;
+            playerItemPicker = null;
             CancelInvoke("MoveToPlayer");
         }
     }
@@ -107,21 +107,21 @@ public class LootableItem : MonoBehaviour, ISaveable
             StopCoroutine(moveCoroutine);
         }
 
-        moveCoroutine = StartCoroutine(MoveToPlayer(player));
+        moveCoroutine = StartCoroutine(MoveToPlayer(playerItemPicker));
     }
 
-    IEnumerator MoveToPlayer(GameObject gameObject)
+    IEnumerator MoveToPlayer(GameObject _target)
     {
-        while (Vector3.Distance(this.transform.position, gameObject.transform.position) > 0.05f)
+        while (Vector3.Distance(this.transform.position, _target.transform.position) > 0.05f)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, gameObject.transform.position, Time.deltaTime * configuration.moveSpeed);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, _target.transform.position, Time.deltaTime * configuration.moveSpeed);
             yield return null;
         }
 
         if (configuration.data != null)
         {
             /*
-            Inventory getInventory = gameObject.GetComponent<Inventory>();
+            Inventory getInventory = _target.GetComponent<Inventory>();
             getInventory.AddItem(configuration.data, configuration.amount);
             */
         }
