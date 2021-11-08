@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using anogamelib;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Mover : MonoBehaviour
@@ -8,7 +9,7 @@ public class Mover : MonoBehaviour
 	[SerializeField]
 	private float m_fSpeed;
 
-	private List<IMove> IMoveInterfaces = new List<IMove>();
+	private List<IMove2D> IMoveInterfaces = new List<IMove2D>();
 	private List<IFreezeMovement> IFreezeMovementInterfaces = new List<IFreezeMovement>();
 
 	private Rigidbody2D m_rb;
@@ -21,7 +22,7 @@ public class Mover : MonoBehaviour
 
 	private void Awake()
 	{
-		GetComponentsInChildren<IMove>(true, IMoveInterfaces);
+		GetComponentsInChildren<IMove2D>(true, IMoveInterfaces);
 		GetComponentsInChildren<IFreezeMovement>(true, IFreezeMovementInterfaces);
 		m_rb = GetComponent<Rigidbody2D>();
 
@@ -54,7 +55,7 @@ public class Mover : MonoBehaviour
 	{
 		for (int i = 0; i < IMoveInterfaces.Count; i++)
 		{
-			IMoveInterfaces[i].OnMove(_direction, _speed);
+			IMoveInterfaces[i].OnMoveHandle(_direction, _speed);
 		}
 	}
 
@@ -103,5 +104,6 @@ public class Mover : MonoBehaviour
 	{
 		return m_lastSavedPosition != (Vector2)this.transform.position;
 	}
+
 	#endregion
 }

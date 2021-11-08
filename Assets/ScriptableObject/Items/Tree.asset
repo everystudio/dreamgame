@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b8b4038b0a9134b8dd415439919c08, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  guid: 
+  icon: {fileID: 21300000, guid: 444ead6f2b6ca0040909c68ac6f2e783, type: 3}
+  itemName: "\u6728\u6750"
+  description: "\u30AF\u30E9\u30D5\u30C8\u7528\u7D20\u6750"
+  canStack: 1
+  hasSlot: 1
+  hasEnergy: 0
+  isRemoveable: 0
+  price: 0
