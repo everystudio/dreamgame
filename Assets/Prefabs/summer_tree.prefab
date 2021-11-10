@@ -13,6 +13,12 @@ GameObject:
   - component: {fileID: 7292359795022631400}
   - component: {fileID: 4708839248656451312}
   - component: {fileID: 4831740051088973024}
+  - component: {fileID: 1496400998}
+  - component: {fileID: 1496400999}
+  - component: {fileID: 1496401003}
+  - component: {fileID: 1496401004}
+  - component: {fileID: 1496401005}
+  - component: {fileID: 1496401006}
   m_Layer: 0
   m_Name: summer_tree
   m_TagString: Untagged
@@ -97,7 +103,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 28
+  m_SortingOrder: 172
 --- !u!114 &4708839248656451312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +144,145 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1.25}
   m_EdgeRadius: 0
+--- !u!114 &1496400998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bafcf97e81fb4748ab8f4ffcb9a2e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_prefabLootable: {fileID: 3054553250557448665, guid: 3d5cf84bf2a381a45a92eb161350d74c, type: 3}
+  itemsToDrop:
+  - itemData: {fileID: 11400000, guid: f6ee48e5299db8945af905c8a54792a9, type: 2}
+    itemAmount: {x: 1, y: 1}
+    dropCount: {x: 1, y: 1}
+  dropRadius: 0.5
+--- !u!114 &1496400999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b13c2dc9aa6a04a87a039b12350a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 1496401006}
+  m_fDelay: 0
+  location: 0
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496400998}
+        m_TargetAssemblyTypeName: ItemDropper, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1496401003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b13c2dc9aa6a04a87a039b12350a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 1496401006}
+  m_fDelay: 0.3
+  location: 0
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7292359795022631403}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1496401004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231cca9a332b575438ad532cde533f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fShakePower: 0.1
+--- !u!114 &1496401005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692a5d320f7f123498e238d18734c19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 1496401006}
+  m_fDelay: 0
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a7cc4e62ec46e254ab90fa23e2faea2c, type: 2}
+        m_TargetAssemblyTypeName: ActionPlaySound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 624f637baaa4a214988558158d84c50f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1496401006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8cd38b73883904c82a7613268011bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHP: 3
+  maxHP: 3
+  canBecomeInvulnerable: 0
+  startInvulnerable: 0
 --- !u!1 &7292359795592661509
 GameObject:
   m_ObjectHideFlags: 0

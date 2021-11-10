@@ -39,7 +39,10 @@ public class Mover : MonoBehaviour
 		_direction.Normalize();
 
 		m_rb.MovePosition((Vector2)this.transform.position + ((_direction * m_fSpeed) * Time.deltaTime));
-		m_direction = _direction;
+		if(!(_direction.x == 0f && _direction.y == 0f))
+		{
+			m_direction = _direction;
+		}
 
 		DispatchMoveEvent(_direction, (_direction.x == 0 && _direction.y == 0) ? 0 : m_fSpeed);
 	}
