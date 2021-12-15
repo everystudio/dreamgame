@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Lowscope.ScriptableObjectUpdater;
 using UnityEngine.Audio;
 
 [CreateAssetMenu(menuName = "Actions/Play Sound")]
@@ -13,9 +12,12 @@ public class ActionPlaySound : ScriptableObject
     [SerializeField]
     private AudioMixerGroup fxAudioMixer;
 
-    [UpdateScriptableObject(eventType = EEventType.Awake)]
+    private bool m_bInitialized = false;
+
     public void Initialize()
     {
+		if (m_bInitialized) { return; }
+        m_bInitialized = true;
         /*
         musicAudioSource = CreateAudioSource();
         musicAudioSource.outputAudioMixerGroup = musicAudioMixer;
@@ -34,6 +36,7 @@ public class ActionPlaySound : ScriptableObject
 
     public void PlaySound(AudioClip clip)
     {
+        Initialize();
         if (fxAudioSource.enabled)
         {
             fxAudioSource.PlayOneShot(clip);
