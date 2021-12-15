@@ -110,7 +110,7 @@ public class LootableItem : MonoBehaviour, ISaveable
         moveCoroutine = StartCoroutine(MoveToPlayer(playerItemPicker));
     }
 
-    IEnumerator MoveToPlayer(GameObject _target)
+    IEnumerator MoveToPlayer(GameObject _target)// _target is ItemPicker
     {
         while (Vector3.Distance(this.transform.position, _target.transform.position) > 0.05f)
         {
@@ -120,10 +120,8 @@ public class LootableItem : MonoBehaviour, ISaveable
 
         if (configuration.data != null)
         {
-            /*
-            Inventory getInventory = _target.GetComponent<Inventory>();
+            Inventory getInventory = _target.GetComponent<ItemPicker>().TargetPlayer.GetComponent<Inventory>();
             getInventory.AddItem(configuration.data, configuration.amount);
-            */
         }
 
         this.gameObject.SetActive(false);

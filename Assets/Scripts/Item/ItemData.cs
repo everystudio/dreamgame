@@ -32,10 +32,8 @@ public class ItemData : ScriptableAsset
     [SerializeField, Tooltip("Can this item be dropped or destroyed?")]
     private bool isRemoveable;
 
-    /*
     [SerializeField]
     private ItemAction action;
-    */
 
     [SerializeField]
     private int price;
@@ -49,12 +47,10 @@ public class ItemData : ScriptableAsset
     {
         get { return itemName; }
     }
-    /*
     public ItemAction Action
     {
         get { return action; }
     }
-    */
     public bool CanStack
     {
         get { return canStack; }

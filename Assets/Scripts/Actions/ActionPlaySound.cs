@@ -16,7 +16,7 @@ public class ActionPlaySound : ScriptableObject
 
     public void Initialize()
     {
-		if (m_bInitialized) { return; }
+		if (fxAudioSource != null) { return; }
         m_bInitialized = true;
         /*
         musicAudioSource = CreateAudioSource();
@@ -44,6 +44,7 @@ public class ActionPlaySound : ScriptableObject
     }
     private AudioSource CreateAudioSource()
     {
+        Debug.Log("CreateAudioSource");
         AudioSource newSource = new GameObject().AddComponent<AudioSource>();
         GameObject.DontDestroyOnLoad(newSource);
 

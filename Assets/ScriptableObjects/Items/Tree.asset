@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2b8b4038b0a9134b8dd415439919c08, type: 3}
-  m_Name: Stone
+  m_Name: Tree
   m_EditorClassIdentifier: 
-  guid: 
-  icon: {fileID: 21300000, guid: 0396b21a260358c4fab7b46d84876b0d, type: 3}
-  itemName: "\u77F3"
-  description: "\u5C0F\u3055\u3044\u77F3\u306E\u7834\u7247"
+  guid: b69c29a7-1857-47bb-a73f-3299a27b48a1
+  icon: {fileID: 21300000, guid: 444ead6f2b6ca0040909c68ac6f2e783, type: 3}
+  itemName: "\u6728\u6750"
+  description: "\u30AF\u30E9\u30D5\u30C8\u7528\u7D20\u6750"
   canStack: 1
   hasSlot: 1
   hasEnergy: 0
   isRemoveable: 0
+  action: {fileID: 0}
   price: 0
