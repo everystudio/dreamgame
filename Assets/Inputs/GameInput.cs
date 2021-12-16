@@ -312,7 +312,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""ScrollWheel"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""3e4894eb-c09c-45a0-a719-aa3dd5b9a7af"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

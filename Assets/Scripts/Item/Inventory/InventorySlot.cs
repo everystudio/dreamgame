@@ -205,7 +205,7 @@ public class InventorySlot : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData _eventData)
     {
-        if (m_settings.equipItemOnClick)
+        //if (m_settings.equipItemOnClick)
         {
             if (m_references.Inventory != null)
             {

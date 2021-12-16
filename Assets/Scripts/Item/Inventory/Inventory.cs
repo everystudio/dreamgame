@@ -62,7 +62,9 @@ public class Inventory : MonoBehaviour
     public void SelectItemByIndex(int _iSlotIndex)
     {
         if (_iSlotIndex < 0 || _iSlotIndex > m_inventorySize || _iSlotIndex == m_selectedSlotIndex)
+        {
             return;
+        }
 
         DeSelectItem(m_selectedSlotIndex);
 
