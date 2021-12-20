@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemDropper : MonoBehaviour
 {
     public GameObject m_prefabLootable;
+    public ScriptablePoolContainer lootableItemPool;
 
     [System.Serializable]
     public class DroppableItem

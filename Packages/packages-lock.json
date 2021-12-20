@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "anogame.ucp.anogamelib": {
-      "version": "git@github.com:everystudio/ucp.anogamelib.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "8172788fc7fe1a15e2307d885d49a2e0a496ae2b"
-    },
     "com.unity.2d.animation": {
       "version": "6.0.4",
       "depth": 0,

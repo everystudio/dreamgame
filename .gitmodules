@@ -1,0 +1,3 @@
+[submodule "Assets/ucp.anogamelib"]
+	path = Assets/ucp.anogamelib
+	url = git@github.com:everystudio/ucp.anogamelib.git

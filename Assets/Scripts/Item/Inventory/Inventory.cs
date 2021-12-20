@@ -130,9 +130,10 @@ public class Inventory : MonoBehaviour
         return getItem;
     }
 
-    public void DropItem(int slotIndex)
+    public void DropItem(int _slotIndex)
     {
-        if (!GetItem(slotIndex).Data.IsRemoveable)
+        Debug.Log($"DropItem:{_slotIndex}");
+        if (!GetItem(_slotIndex).Data.IsRemoveable)
         {
             return;
         }
@@ -155,16 +156,16 @@ public class Inventory : MonoBehaviour
             */
 
             lootableItem.transform.position = (Vector2)this.transform.position + (aimDirection * (lootableItem.PickupDistance() * 1.05f));
-            lootableItem.Configure(GetItem(slotIndex).Data, GetItem(slotIndex).Amount);
+            lootableItem.Configure(GetItem(_slotIndex).Data, GetItem(_slotIndex).Amount);
             lootableItem.gameObject.SetActive(true);
 
             foreach (var dispatcher in m_eventDispatchers.Values)
             {
-                dispatcher.DispatchDropItem(slotIndex, lootableItem);
+                dispatcher.DispatchDropItem(_slotIndex, lootableItem);
             }
         }
 
-        RemoveItem(slotIndex);
+        RemoveItem(_slotIndex);
     }
 
 

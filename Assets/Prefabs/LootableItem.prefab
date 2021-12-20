@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2953089200513026104}
   - component: {fileID: 3829632796793757277}
   - component: {fileID: 9139127055731709187}
+  - component: {fileID: -5112488159655303381}
   m_Layer: 0
   m_Name: LootableItem
   m_TagString: Untagged
@@ -145,6 +146,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5112488159655303381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054553250557448665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d133f491446bf4f9c696bd2978257b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameSaved: {fileID: 11400000, guid: 5ae9058b56922b94c8929347f86c4ba2, type: 2}
+  onGameLoaded: {fileID: 11400000, guid: 0ffb3c91c58177841a5628a7afc5b572, type: 2}
+  saveableComponents:
+  - identifier:
+      UseConstant: 1
+      ConstantValue: LootableItem 60d05
+      Variable: {fileID: 0}
+    monoBehaviour: {fileID: 5441792564241100698}
+  saveIdentification:
+    UseConstant: 1
+    ConstantValue: 
+    Variable: {fileID: 0}
+  loadOnce: 0
 --- !u!1 &5192767036174056258
 GameObject:
   m_ObjectHideFlags: 0

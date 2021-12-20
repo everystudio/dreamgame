@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "anogame.ucp.anogamelib": "git@github.com:everystudio/ucp.anogamelib.git",
     "com.unity.2d.animation": "6.0.4",
     "com.unity.2d.pixel-perfect": "5.0.0",
     "com.unity.2d.psdimporter": "5.0.4",

@@ -24,10 +24,8 @@ public class ItemData : ScriptableAsset
     [SerializeField, Tooltip("Does this item have a energy bar? Item actions are used to manage the values.")]
     private bool hasEnergy;
 
-    /*
     [SerializeField, Tooltip("If has energy is toggled, these values will be utilized")]
     private ItemEnergy energyStartValue;
-    */
 
     [SerializeField, Tooltip("Can this item be dropped or destroyed?")]
     private bool isRemoveable;
@@ -65,12 +63,10 @@ public class ItemData : ScriptableAsset
     {
         get { return hasEnergy; }
     }
-    /*
     public ItemEnergy EnergyStartValue
     {
         get { return energyStartValue; }
     }
-    */
     public bool IsRemoveable
     {
         get { return isRemoveable; }
