@@ -19,6 +19,9 @@ GameObject:
   - component: {fileID: 1496401004}
   - component: {fileID: 1496401005}
   - component: {fileID: 1496401006}
+  - component: {fileID: -1344218995150944766}
+  - component: {fileID: 8749508654036261745}
+  - component: {fileID: -682792055273047946}
   m_Layer: 0
   m_Name: summer_tree
   m_TagString: Untagged
@@ -103,7 +106,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 172
+  m_SortingOrder: 28
 --- !u!114 &4708839248656451312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bafcf97e81fb4748ab8f4ffcb9a2e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_prefabLootable: {fileID: 3054553250557448665, guid: 3d5cf84bf2a381a45a92eb161350d74c, type: 3}
+  lootableItemPool: {fileID: 0}
   itemsToDrop:
   - itemData: {fileID: 11400000, guid: f6ee48e5299db8945af905c8a54792a9, type: 2}
     itemAmount: {x: 1, y: 1}
@@ -283,6 +286,65 @@ MonoBehaviour:
   maxHP: 3
   canBecomeInvulnerable: 0
   startInvulnerable: 0
+--- !u!114 &-1344218995150944766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d133f491446bf4f9c696bd2978257b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameSaved: {fileID: 11400000, guid: 5ae9058b56922b94c8929347f86c4ba2, type: 2}
+  onGameLoaded: {fileID: 11400000, guid: 0ffb3c91c58177841a5628a7afc5b572, type: 2}
+  saveableComponents:
+  - identifier:
+      UseConstant: 1
+      ConstantValue: Mover dff3e
+      Variable: {fileID: 0}
+    monoBehaviour: {fileID: -682792055273047946}
+  saveIdentification:
+    UseConstant: 1
+    ConstantValue: 
+    Variable: {fileID: 0}
+  loadOnce: 0
+--- !u!50 &8749508654036261745
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-682792055273047946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292359795022631403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92507dfa5a9d04841ab328f48fe18c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fSpeed: 0
 --- !u!1 &7292359795592661509
 GameObject:
   m_ObjectHideFlags: 0

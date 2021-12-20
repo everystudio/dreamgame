@@ -45,6 +45,10 @@ Assets/Scripts/Test/.meta
 Assets/Energy Bar Toolkit/Example/*
 Assets/Energy Bar Toolkit/Example.meta
 
+Assets/Samples/*
+Assets/Samples.meta
+
+
 .vs/*
 ignore_resources/*
 

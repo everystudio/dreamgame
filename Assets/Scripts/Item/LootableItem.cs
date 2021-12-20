@@ -34,6 +34,7 @@ public class LootableItem : MonoBehaviour, ISaveable
 
     private GameObject playerItemPicker;
     private bool isLooted;
+    private bool m_bDropped;
 
     private void OnValidate()
     {
@@ -48,11 +49,12 @@ public class LootableItem : MonoBehaviour, ISaveable
         return references.boxCollider2D.size.magnitude * 0.5f;
     }
 
-    public void Configure(ItemData data, int amount)
+    public void Configure(ItemData _data, int _amount , bool _bDrop = false)
     {
-        configuration.data = data;
-        configuration.amount = amount;
+        configuration.data = _data;
+        configuration.amount = _amount;
         isLooted = false;
+        m_bDropped = _bDrop;
         Refresh();
     }
 
@@ -84,6 +86,10 @@ public class LootableItem : MonoBehaviour, ISaveable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+		if (m_bDropped)
+		{
+            return;
+		}
         if (!isLooted && collision.CompareTag("PlayerItemPicker"))
         {
             playerItemPicker = collision.gameObject;
@@ -98,6 +104,7 @@ public class LootableItem : MonoBehaviour, ISaveable
             playerItemPicker = null;
             CancelInvoke("MoveToPlayer");
         }
+        m_bDropped = false;
     }
 
     private void MoveToPlayer()
@@ -151,11 +158,10 @@ public class LootableItem : MonoBehaviour, ISaveable
     public void OnLoad(string data)
     {
         SaveData getData = JsonUtility.FromJson<SaveData>(data);
-        /*
         if (!string.IsNullOrEmpty(data))
         {
             Configure(ScriptableAssetDatabase.GetAsset(getData.data) as ItemData, getData.amount);
-        }*/
+        }
     }
 
     public bool OnSaveCondition()

@@ -77,7 +77,16 @@ public class PlayerController : StateMachineBase<PlayerController>
 
 		private void Primary_performed(InputAction.CallbackContext obj)
 		{
-			machine.SetState(new PlayerController.Attack(machine));
+			Debug.Log(Mouse.current.position.ReadValue());
+			Vector3 screenpos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y,0f);
+			Ray ray = Camera.main.ScreenPointToRay(screenpos);
+			RaycastHit2D hit2d = Physics2D.Raycast(Mouse.current.position.ReadValue(), (Vector2)ray.direction);
+			Debug.Log(hit2d);
+			Debug.Log(hit2d.collider);
+			if (hit2d.collider == null)
+			{
+				machine.SetState(new PlayerController.Attack(machine));
+			}
 		}
 
 		public override void OnExitState()

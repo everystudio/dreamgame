@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using anogamelib;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class Inventory : MonoBehaviour
 
     private int m_selectedSlotIndex = -1;
     public int SelectedSlotIndex { get { return m_selectedSlotIndex; } }
+
     [SerializeField]
-    private GameObject m_prefabLootable = null;
+    private SaveablePrefab m_droppableItemPrefab = null;
 
     private Dictionary<int, InventoryItem> m_items = new Dictionary<int, InventoryItem>();
 	public Dictionary<int, InventoryItem> Items { get { return m_items; } }
@@ -140,8 +142,8 @@ public class Inventory : MonoBehaviour
 
         m_isDirty = true;
 
-        //LootableItem lootable = droppableItemPrefab.Retrieve<LootableItem>();
-        LootableItem lootableItem = Instantiate(m_prefabLootable).GetComponent<LootableItem>();
+        LootableItem lootableItem = m_droppableItemPrefab.Retrieve<LootableItem>();
+        //LootableItem lootableItem = Instantiate(m_prefabLootable).GetComponent<LootableItem>();
 
         if (lootableItem != null)
         {
@@ -156,7 +158,7 @@ public class Inventory : MonoBehaviour
             */
 
             lootableItem.transform.position = (Vector2)this.transform.position + (aimDirection * (lootableItem.PickupDistance() * 1.05f));
-            lootableItem.Configure(GetItem(_slotIndex).Data, GetItem(_slotIndex).Amount);
+            lootableItem.Configure(GetItem(_slotIndex).Data, GetItem(_slotIndex).Amount , true);
             lootableItem.gameObject.SetActive(true);
 
             foreach (var dispatcher in m_eventDispatchers.Values)

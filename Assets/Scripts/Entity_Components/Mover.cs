@@ -4,7 +4,7 @@ using UnityEngine;
 using anogamelib;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Mover : MonoBehaviour
+public class Mover : MonoBehaviour , ISaveable
 {
 	[SerializeField]
 	private float m_fSpeed;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemDropper : MonoBehaviour
 {
-    public GameObject m_prefabLootable;
     public ScriptablePoolContainer lootableItemPool;
 
     [System.Serializable]
@@ -33,8 +32,8 @@ public class ItemDropper : MonoBehaviour
             int dropCount = Random.Range(itemsToDrop[i].dropCount.x, itemsToDrop[i].dropCount.y);
             for (int i2 = 0; i2 < dropCount; i2++)
             {
-                LootableItem lootableItem = Instantiate(m_prefabLootable).GetComponent<LootableItem>();
-                //LootableItem lootableItem = lootableItemPool?.Retrieve<LootableItem>();
+                //LootableItem lootableItem = Instantiate(m_prefabLootable).GetComponent<LootableItem>();
+                LootableItem lootableItem = lootableItemPool?.Retrieve<LootableItem>();
 
                 if (lootableItem != null)
                 {
