@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using anogamelib;
 using System;
+using Chronos;
 
 public class PlayerController : StateMachineBase<PlayerController>
 {
@@ -13,12 +14,24 @@ public class PlayerController : StateMachineBase<PlayerController>
 
 	public GameObject m_prefAttack;
 
+	private Timeline m_timelineField;
+
 	//private List<IMove2D> IMoveInterfaces = new List<IMove2D>();
 
 	private void Start()
 	{
 		m_animator = GetComponent<Animator>();
 		SetState(new PlayerController.Idle(this));
+
+		m_timelineField = GetComponent<Timeline>();
+		if( m_timelineField == null)
+		{
+			m_timelineField = gameObject.AddComponent<Timeline>();
+			m_timelineField.mode = TimelineMode.Global;
+			m_timelineField.globalClockKey = "Field";
+		}
+
+		m_mover.SetTimeline(m_timelineField);
 
 		//GetComponentsInChildren<IMove2D>(true, IMoveInterfaces);
 	}

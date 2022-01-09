@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using anogamelib;
+using Chronos;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Mover : MonoBehaviour , ISaveable
@@ -19,6 +20,12 @@ public class Mover : MonoBehaviour , ISaveable
 
 	private Vector2 m_direction;
 	public Vector2 Direction { get { return m_direction; } }
+
+	private Timeline m_timeline;
+	public void SetTimeline(Timeline _timeline)
+	{
+		m_timeline = _timeline;
+	}
 
 	private void Awake()
 	{
@@ -38,8 +45,14 @@ public class Mover : MonoBehaviour , ISaveable
 
 		_direction.Normalize();
 
-		m_rb.MovePosition((Vector2)this.transform.position + ((_direction * m_fSpeed) * Time.deltaTime));
-		if(!(_direction.x == 0f && _direction.y == 0f))
+		float deltaTime = Time.deltaTime;
+		if (m_timeline != null)
+		{
+			deltaTime = m_timeline.deltaTime;
+		}
+		transform.Translate(((_direction * m_fSpeed) * deltaTime));
+
+		if (!(_direction.x == 0f && _direction.y == 0f))
 		{
 			m_direction = _direction;
 		}
