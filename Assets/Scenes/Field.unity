@@ -10609,12 +10609,16 @@ GameObject:
   m_Component:
   - component: {fileID: 940460703}
   - component: {fileID: 940460709}
-  - component: {fileID: 940460708}
   - component: {fileID: 940460707}
+  - component: {fileID: 940460708}
   - component: {fileID: 940460706}
   - component: {fileID: 940460705}
   - component: {fileID: 940460704}
   - component: {fileID: 940460710}
+  - component: {fileID: 940460714}
+  - component: {fileID: 940460713}
+  - component: {fileID: 940460712}
+  - component: {fileID: 940460711}
   m_Layer: 0
   m_Name: PrefEnemy
   m_TagString: Enemy
@@ -10630,7 +10634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940460702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.451359, y: -8.998674, z: 0}
+  m_LocalPosition: {x: 6.61, y: 3.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 103138318}
@@ -10661,7 +10665,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 899
+  m_SortingOrder: -352
 --- !u!58 &940460706
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10724,6 +10728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b393a5efbbd6a74d9e62ace5630f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_begenCombat: {fileID: 11400000, guid: 1cdf276b6f590aa49aaa602aef52378d, type: 2}
+  begentest2: {fileID: 11400000, guid: 2bda31129c3bfca4f850a8e8a96d1aee, type: 2}
 --- !u!114 &940460710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10741,6 +10747,73 @@ MonoBehaviour:
   _globalClockKey: Field
   _rewindable: 1
   _recordingDuration: 30
+--- !u!114 &940460711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940460702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bafcf97e81fb4748ab8f4ffcb9a2e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootableItemPool: {fileID: 11400000, guid: e9308cec628a0e5439b69a236cc0e64d, type: 2}
+  itemsToDrop: []
+  dropRadius: 0.5
+--- !u!114 &940460712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940460702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b13c2dc9aa6a04a87a039b12350a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  m_fDelay: 0
+  location: 0
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &940460713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940460702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692a5d320f7f123498e238d18734c19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 940460714}
+  m_fDelay: 0
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &940460714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940460702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8cd38b73883904c82a7613268011bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHP: 3
+  maxHP: 3
+  canBecomeInvulnerable: 0
+  startInvulnerable: 0
 --- !u!1001 &963799454
 PrefabInstance:
   m_ObjectHideFlags: 0

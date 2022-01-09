@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using anogamelib;
+using Chronos;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class LootableItem : MonoBehaviour, ISaveable
@@ -35,6 +36,8 @@ public class LootableItem : MonoBehaviour, ISaveable
     private GameObject playerItemPicker;
     private bool isLooted;
     private bool m_bDropped;
+
+    private Timeline m_timeline;
 
     private void OnValidate()
     {
@@ -82,6 +85,12 @@ public class LootableItem : MonoBehaviour, ISaveable
                 references.amountText.gameObject.SetActive(false);
             }
         }
+        if(m_timeline== null)
+		{
+            m_timeline = gameObject.AddComponent<Timeline>();
+            m_timeline.mode = TimelineMode.Global;
+            m_timeline.globalClockKey = "Field";
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -121,7 +130,7 @@ public class LootableItem : MonoBehaviour, ISaveable
     {
         while (Vector3.Distance(this.transform.position, _target.transform.position) > 0.05f)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, _target.transform.position, Time.deltaTime * configuration.moveSpeed);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, _target.transform.position, m_timeline.deltaTime * configuration.moveSpeed);
             yield return null;
         }
 
