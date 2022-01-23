@@ -18,8 +18,8 @@ public class CombatHandler : StateMachineBase<CombatHandler>
 	{
 		if (m_bEnableBattle && _collision.gameObject.CompareTag("Enemy"))
 		{
-			Debug.Log("hit_player");
-			m_combatBegin.Invoke(gameObject);
+			//Debug.Log("hit_enemy");
+			m_combatBegin.Invoke(_collision.gameObject);
 		}
 	}
 

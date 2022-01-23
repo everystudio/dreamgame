@@ -10728,8 +10728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b393a5efbbd6a74d9e62ace5630f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_begenCombat: {fileID: 11400000, guid: 1cdf276b6f590aa49aaa602aef52378d, type: 2}
-  begentest2: {fileID: 11400000, guid: 2bda31129c3bfca4f850a8e8a96d1aee, type: 2}
 --- !u!114 &940460710
 MonoBehaviour:
   m_ObjectHideFlags: 0
