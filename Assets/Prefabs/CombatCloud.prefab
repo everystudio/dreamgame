@@ -131,7 +131,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -445
+  m_SortingOrder: -255
 --- !u!114 &7993797852662186319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sortingGroup: {fileID: 7993797852662186312}
   m_fPositionScaling: -100
-  m_iOffset: 10
+  m_iOffset: 200
 --- !u!95 &2264373044899706431
 Animator:
   serializedVersion: 3

@@ -14445,6 +14445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944320290}
   - component: {fileID: 944320292}
+  - component: {fileID: 944320301}
   - component: {fileID: 944320297}
   - component: {fileID: 944320289}
   - component: {fileID: 944320288}
@@ -14734,6 +14735,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_combatBegin: {fileID: 11400000, guid: 1cdf276b6f590aa49aaa602aef52378d, type: 2}
+--- !u!114 &944320301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944320287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8cd38b73883904c82a7613268011bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHP: 5
+  maxHP: 5
+  canBecomeInvulnerable: 0
+  startInvulnerable: 0
 --- !u!1 &945469329
 GameObject:
   m_ObjectHideFlags: 0
