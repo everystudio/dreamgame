@@ -13,6 +13,7 @@ public class AttackSlash : MonoBehaviour
 	public IEnumerator Slash(Vector2 _dir)
 	{
 		m_direction = _dir;
+		Debug.Log(_dir);
 		yield return new WaitForSeconds(1.0f);
 		Destroy(gameObject);
 	}

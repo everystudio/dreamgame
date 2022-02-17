@@ -55,6 +55,9 @@ public class PlayerController : StateMachineBase<PlayerController>
 	private void CreateAttack(Vector2 _pos)
 	{
 		float angle = Vector2.SignedAngle(new Vector2(-1f, 0f), m_mover.Direction);
+		//Debug.Log(angle);
+		Debug.Log(m_mover.Direction);
+
 		AttackSlash script = Instantiate(m_prefAttack, new Vector3(_pos.x, _pos.y), Quaternion.AngleAxis(angle, new Vector3(0, 0, 1))).GetComponent<AttackSlash>();
 
 		StartCoroutine(script.Slash(m_mover.Direction));

@@ -18,6 +18,7 @@ public class Mover : MonoBehaviour , ISaveable
 	private bool m_isMovementFrozen;
 	public bool IsMovementFrozen { get { return m_isMovementFrozen; } }
 
+	[SerializeField]
 	private Vector2 m_direction;
 	public Vector2 Direction { get { return m_direction; } }
 
@@ -50,7 +51,7 @@ public class Mover : MonoBehaviour , ISaveable
 		{
 			deltaTime = m_timeline.deltaTime;
 		}
-		transform.Translate(((_direction * m_fSpeed) * deltaTime));
+		transform.Translate(((_direction * m_fSpeed) * deltaTime), Space.World);
 
 		if (!(_direction.x == 0f && _direction.y == 0f))
 		{
