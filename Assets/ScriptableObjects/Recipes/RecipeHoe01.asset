@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d6900b2911d4e4998db8731a9d6e49, type: 3}
+  m_Name: RecipeHoe01
+  m_EditorClassIdentifier: 
+  requireItems:
+  - itemData: {fileID: 11400000, guid: f6ee48e5299db8945af905c8a54792a9, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: eb0f1488571473744a19ad5d8188f0d8, type: 2}
+    amount: 3
+  createdItem: {fileID: 11400000, guid: 1537f466bf2e565498b99fc0046a0a72, type: 2}
+  createdAmount: 1
