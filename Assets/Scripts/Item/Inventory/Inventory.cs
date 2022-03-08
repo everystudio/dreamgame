@@ -253,6 +253,7 @@ public class Inventory : MonoBehaviour
 
             if (getItem != null)
             {
+                Debug.Log(getItem);
                 getItem.Amount += amount;
                 foreach (var dispatcher in m_eventDispatchers.Values)
                 {
@@ -342,6 +343,34 @@ public class Inventory : MonoBehaviour
             dispatcher.DispatchRemoveItem(_iSlotIndex);
         }
     }
+    public void ReduceItem(ItemData _itemData , int _iReduce)
+    {
+        int iIndex = 0;
+
+        InventoryItem inventoryItem = GetItem(_itemData, out iIndex);
+
+        if (inventoryItem == null )
+        {
+            return;
+        }
+
+        if( inventoryItem.Amount == _iReduce)
+        {
+            RemoveItem(iIndex);
+        }
+        else if(_iReduce < inventoryItem.Amount)
+        {
+            m_isDirty = true;
+            inventoryItem.Amount -= _iReduce;
+            foreach (var dispatcher in m_eventDispatchers.Values)
+            {
+                dispatcher.DispatchItemLoad(iIndex, _itemData, inventoryItem.Amount);
+            }
+        }
+    }
+
+
+
     public void ReloadItemSlot(int _iSlotIndex)
     {
         InventoryItem item = GetItem(_iSlotIndex);
@@ -370,6 +399,32 @@ public class Inventory : MonoBehaviour
         {
             ReloadItemSlot(i);
         }
+    }
+
+    public bool HasCheckWithAmount(ItemData _itemData, int _iAmount)
+    {
+        int itemIndex = 0;
+        InventoryItem inventoryItem = GetItem(_itemData, out itemIndex);
+        if (inventoryItem != null)
+        {
+            if (_iAmount <= inventoryItem.Amount)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool CheckReicpe(RecipeModel _recipe)
+    {
+        foreach(RecipeRequireItem req in _recipe.requireItems)
+        {
+            if(!HasCheckWithAmount(req.itemData, req.amount))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 

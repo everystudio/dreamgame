@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using anogamelib;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "Item Data", menuName = "Items/Item Data")]
 public class ItemData : ScriptableAsset
 {
